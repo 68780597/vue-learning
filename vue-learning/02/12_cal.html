@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="a">
+        <select v-model="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model="b">
+        结果:{{result}}
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                a: 0,   //第一个操作
+                op: '+',    //运算符
+                b: 0,       //第二个操作数
+                resut: "0"   //结果显示
+            },
+            methods: {
+                headle() {
+                    switch (this.op) {
+                        case "+":
+                            this.resut = parseInt(a) + parseInt(b);
+                            break;
+                        case "-":
+                            this.resut = parseInt(a) - parseInt(b);
+                            break;
+                        case "*":
+                            this.resut = parseInt(a) * parseInt(b);
+                            break;
+                        case "/":
+                            this.resut = parseInt(a) / parseInt(b);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            },
+            watch: {
+                a() {
+                    this.headle();
+                },
+                b() {
+                    this.headle();
+                },
+                a() {
+                    this.headle();
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

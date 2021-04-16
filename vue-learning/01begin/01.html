@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--0. 引入vue.js文件-->
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <!--1. 编写界面:
+        1.1 整个界面所有内容必须包裹在一个唯一的父元素内
+        1.2 找到界面中可能变化的地方，改为{{变量}}
+  -->
+  <div id="app">
+    <button id="btn1" @click="add">clicn me({{n}})</button>
+  </div>
+  <!--2. 编写自定义js程序-->
+  <script>
+    //2.1 定义一个对象，集中保存所有页面上需要的变量和初始值
+    var data={
+      //因为页面上需要一个变量n
+      //所以data对象中需要定义一个n
+      n:0
+    }
+    //2.2 创建Vue对象，将保存数据的data{}和界面<div id="app">绑定起来
+    var vm=new Vue({//请了一个快递员，名为vm
+      el:"#app", //负责名为#app这个小区中所有快递的派送
+      //data:data,
+      data,//将保存所有变量的data对象作为这个快递员的库房
+      //Vue规定，所有处理函数都必须放在methods中
+      methods:{
+        //因为页面上需要一个add函数
+        //所以methods中就要加一个add函数
+        //add:function(){ ... }
+        add(){
+          //本来想该button中的n
+          //但是vue会自动派送
+          //所以只改data中的n即可
+          //vue要求，事件处理函数想修改data中的变量，必须加this.
+          this.n++;
+        }
+      }
+    })
+
+  /*//只要涉及交互: DOM 4步:
+  //1. 查找触发事件的元素
+  //不用程序找了！用肉眼找！
+  //2. 绑定事件处理函数
+  //不用js绑定了！改为在HTML中手工绑定！<button @click="add">
+    //3. 查找要修改的元素
+    //彻底没有了！因为Vue不直接修改元素！
+    //4. 修改元素
+    //遥控修改：只修改data中的变量值即可，只要data中变量值变化，new Vue会自动将data中的新变量值同步到界面上{{}}指定位置！
+  */
+  </script>
+</body>
+</html>

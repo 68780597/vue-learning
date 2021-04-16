@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(val,i) of teachers" :key="i">
+                第{{i+1}}阶段的老师是：{{val}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                teachers: [
+                    "亮亮", "然然", "东东", "涛涛"
+                ]
+            },
+        })
+    </script>
+</body>
+
+</html>

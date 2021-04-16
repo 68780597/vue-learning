@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--1:界面视图-->
+    <div id="app">
+        <input type="text" v-model:value="keywords">
+        <button>搜索一下</button>
+        <h4>输入的关键字是:{{keywords}}</h4>
+    </div>
+    <script>
+    //2:数据模型   model
+    var data={
+        keywords:"macbook 15"
+
+    };
+    //3:控制 （界面数据 同步 VieModel）
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            keywords:"macbook 15"
+        },
+        methods:{
+            serach(){
+                console.log(`调用了search函数，搜索的字符串是：${this.keywords}`);
+            }
+        },
+        watch:{
+            keywords(){
+                
+            }
+        }
+    });
+    </script>
+</body>
+</html>
